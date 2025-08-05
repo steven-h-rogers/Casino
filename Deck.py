@@ -1,4 +1,5 @@
 from collections import defaultdict, Counter, deque
+
 import typing
 class Deck:
 
@@ -8,12 +9,12 @@ class Deck:
     def __init__(self, num_decks=1):
         self.num_decks = num_decks
         self.deck = defaultdict(Counter)
-        all_cards = Deck.STANDARD_VALUES * num_decks
+        self.all_cards = Deck.STANDARD_VALUES * num_decks
 
         
         for suit in Deck.STANDARD_SUITS:
             for _ in range(self.num_decks):
-                self.deck[suit] = Counter(all_cards)
+                self.deck[suit] = Counter(self.all_cards)
 
 
     def __str__(self):
@@ -31,9 +32,35 @@ class Deck:
         deck_info = (deck_metadata + cards_and_counts_by_suit + total_cards_string)
         return deck_info
     
+    # Step 1 of a standard shuffling on a single deck
+    # Cut the deck into 3-5 sections then reverse the order 
+    def strip_cut(self, cut_range = (3,5)):
+        pass
+
+
+
+    """
+    Standard shuffle method for a single deck in casinos
+    used for poker and some blackjack games:
+    Split the deck into 3-5 roughly equal sections and reverse their order
+    (top section will now be bottom, bottom will be top. This gets rid of any
+    preexisting sequences and ensures that the deck is fairly shuffles)
+    Step 2 is 2-3 riffle shuffles where equal halves are (not perfectly 1-1 interleaved)
+    Step3: box shuffle: 4-6 4-6 cards are taken from the top and put underneath in small
+    blocks (same purpose as step 1)
+    step 4 final riffles: 1-2 more times
+    step 5: the player selects where to cut the deck
+    """
+    def standard_single_deck_shuffle(self):
+        pass
+    
 
 standard_deck = Deck()
 print(standard_deck)
+print(type(standard_deck.deck))
+print(type(standard_deck.all_cards))
+
+
             
 
 
