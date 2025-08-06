@@ -3,27 +3,30 @@ from collections import defaultdict, Counter, deque
 import typing
 class Deck:
 
+    # Constants for initialization of a standard deck
     STANDARD_SUITS = ("Spades", "Clubs", "Hearts", "Diamonds")
     STANDARD_VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
+    # Constructor (Default uses one deck)
     def __init__(self, num_decks=1):
         self.num_decks = num_decks
-        self.deck = defaultdict(Counter)
-        self.all_cards = Deck.STANDARD_VALUES * num_decks
+        self.deck_counts = defaultdict(Counter) # This is the actual live deck that will be used in most operations
 
-        
+        self.initialize_deck_counts()
+
+    def initialize_deck_counts(self):
         for suit in Deck.STANDARD_SUITS:
-            for _ in range(self.num_decks):
-                self.deck[suit] = Counter(self.all_cards)
+            for value in Deck.STANDARD_VALUES:
+                self.deck_counts[suit][value] = self.num_decks
 
 
     def __str__(self):
         deck_metadata = f"This deck uses {self.num_decks} deck{'s' if self.num_decks > 1 else ''}."
         cards_and_counts_by_suit = ""
         total_cards = 0
-        for suit in self.deck:
-            for card, count in self.deck[suit].items():
-                cards_and_counts_by_suit += f"X{count} {card} of {suit}  |"
+        for suit in self.deck_counts:
+            for card, count in self.deck_counts[suit].items():
+                cards_and_counts_by_suit += f"x{count} {card} of {suit}  |"
                 total_cards += 1
 
             cards_and_counts_by_suit += '\n'
@@ -57,8 +60,7 @@ class Deck:
 
 standard_deck = Deck()
 print(standard_deck)
-print(type(standard_deck.deck))
-print(type(standard_deck.all_cards))
+print(type(standard_deck.deck_counts))
 
 
             
