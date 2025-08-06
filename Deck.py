@@ -14,10 +14,16 @@ class Deck:
 
         self.initialize_deck_counts()
 
+        self.live_deck = self.initialize_live_deck()
+
+
     def initialize_deck_counts(self):
         for suit in Deck.STANDARD_SUITS:
             for value in Deck.STANDARD_VALUES:
                 self.deck_counts[suit][value] = self.num_decks
+
+    def initialize_live_deck(self):
+        pass
 
 
     def __str__(self):
