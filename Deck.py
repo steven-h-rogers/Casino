@@ -10,6 +10,7 @@ class Deck:
     # Constructor (Default uses one deck)
     def __init__(self, num_decks=1):
         self.num_decks = num_decks
+        # deck_counts[suit][face_value] -> count
         self.deck_counts = defaultdict(Counter) # This is the actual live deck that will be used in most operations
 
         self.initialize_deck_counts()
@@ -23,6 +24,9 @@ class Deck:
                 self.deck_counts[suit][value] = self.num_decks
 
     def initialize_live_deck(self):
+        live_deck = []
+ 
+        
         pass
 
 
@@ -67,6 +71,7 @@ class Deck:
 standard_deck = Deck()
 print(standard_deck)
 print(type(standard_deck.deck_counts))
+print(standard_deck.deck_counts.items())
 
 
             
