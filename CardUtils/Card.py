@@ -14,7 +14,7 @@ class Card:
         print(f"{self.face_value} of {self.suit}: value: {self.actual_value}")
 
     @classmethod
-    def create(cls, face_value, actual_value, suit, is_face_up=True):
+    def create(cls, face_value, suit, is_face_up=True):
         face_value_str = str(face_value).upper()
 
         if face_value_str == "A":

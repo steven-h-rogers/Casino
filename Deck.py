@@ -1,4 +1,5 @@
 from collections import defaultdict, Counter, deque
+from CardUtils.Card import Card
 
 import typing
 class Deck:
@@ -25,9 +26,12 @@ class Deck:
 
     def initialize_live_deck(self):
         live_deck = []
- 
+        for suit, cards_by_count in self.deck_counts.items():
+            for face_value, count in cards_by_count:
+                new_card = Card.create(face_value,suit)
+                live_deck.append(new_card)
         
-        pass
+        return live_deck
 
 
     def __str__(self):
@@ -72,6 +76,9 @@ standard_deck = Deck()
 print(standard_deck)
 print(type(standard_deck.deck_counts))
 print(standard_deck.deck_counts.items())
+
+for card in standard_deck.live_deck:
+    print(card)
 
 
             

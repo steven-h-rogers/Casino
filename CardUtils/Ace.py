@@ -1,8 +1,8 @@
-from Card import Card
+from CardUtils.Card import Card
 import typing
 class Ace(Card):
-    def __init__(self, face_value, suit, is_face_up=True):
-        self.face_value = face_value
+    def __init__(self, suit, is_face_up=True):
+        self.face_value = "A"
         self.actual_value = 11 # default value
         self.suit = suit
         self.is_face_up = is_face_up
