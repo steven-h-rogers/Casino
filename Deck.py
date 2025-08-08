@@ -1,5 +1,5 @@
 from collections import defaultdict, Counter, deque
-from CardUtils.Card import Card
+import CardUtils.CardTemplate as CardTemplate
 
 import typing
 class Deck:
@@ -27,10 +27,10 @@ class Deck:
     def initialize_live_deck(self):
         live_deck = []
         for suit, cards_by_count in self.deck_counts.items():
-            for face_value, count in cards_by_count:
-                new_card = Card.create(face_value,suit)
-                live_deck.append(new_card)
-        
+            for face_value, count in cards_by_count.items():
+                for _ in range(count):
+                    new_card = CardTemplate.create_card(face_value,suit)
+                    live_deck.append(new_card)
         return live_deck
 
 

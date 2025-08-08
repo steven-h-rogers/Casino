@@ -1,5 +1,6 @@
-from CardUtils.Card import Card
 import typing
+from CardUtils.Card import Card
+
 class Ace(Card):
     def __init__(self, suit, is_face_up=True):
         self.face_value = "A"
