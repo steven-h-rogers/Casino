@@ -6,17 +6,15 @@ class Deck:
 
     # Constants for initialization of a standard deck
     STANDARD_SUITS = ("Spades", "Clubs", "Hearts", "Diamonds")
-    STANDARD_VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    STANDARD_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
     # Constructor (Default uses one deck)
-    def __init__(self, num_decks=1):
+    def __init__(self, num_decks=2):
         self.num_decks = num_decks
         # deck_counts[suit][face_value] -> count
-        self.deck_counts = defaultdict(Counter) # This is the actual live deck that will be used in most operations
-
+        self.deck_counts = defaultdict(Counter)
         self.initialize_deck_counts()
-
-        self.live_deck = self.initialize_live_deck()
+        self.live_deck = self.initialize_live_deck() # This list stores all of the card objects 
 
 
     def initialize_deck_counts(self):
@@ -41,7 +39,7 @@ class Deck:
         for suit in self.deck_counts:
             for card, count in self.deck_counts[suit].items():
                 cards_and_counts_by_suit += f"x{count} {card} of {suit}  |"
-                total_cards += 1
+                total_cards += count
 
             cards_and_counts_by_suit += '\n'
 
