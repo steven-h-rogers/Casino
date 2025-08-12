@@ -1,6 +1,5 @@
 from collections import defaultdict, Counter, deque
-import CardUtils.CardTemplate as CardTemplate
-
+from Casino.CardUtils.CardTemplate import create_card
 import typing
 class Deck:
 
@@ -9,17 +8,17 @@ class Deck:
     STANDARD_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
     # Constructor (Default uses one deck)
-    def __init__(self, num_decks=2):
+    def __init__(self, num_decks=1):
         self.num_decks = num_decks
         # deck_counts[suit][face_value] -> count
         self.deck_counts = defaultdict(Counter)
-        self.initialize_deck_counts()
+        self.initialize_deck_counts(Deck.STANDARD_SUITS, Deck.STANDARD_VALUES)
         self.live_deck = self.initialize_live_deck() # This list stores all of the card objects 
 
 
-    def initialize_deck_counts(self):
-        for suit in Deck.STANDARD_SUITS:
-            for value in Deck.STANDARD_VALUES:
+    def initialize_deck_counts(self, suit_list, face_value_list):
+        for suit in suit_list:
+            for value in face_value_list:
                 self.deck_counts[suit][value] = self.num_decks
 
     def initialize_live_deck(self):
@@ -27,7 +26,7 @@ class Deck:
         for suit, cards_by_count in self.deck_counts.items():
             for face_value, count in cards_by_count.items():
                 for _ in range(count):
-                    new_card = CardTemplate.create_card(face_value,suit)
+                    new_card = create_card(face_value,suit)
                     live_deck.append(new_card)
         return live_deck
 
@@ -66,17 +65,15 @@ class Deck:
     step 4 final riffles: 1-2 more times
     step 5: the player selects where to cut the deck
     """
+    """Riffle shuffle could be based on a normal distribution of cards skipped using
+    random. It could also be based on some sort of timing factor. It could also be the 
+    result of a multithreading race condition with some random quality and timing applied
+    to it."""
     def standard_single_deck_shuffle(self):
         pass
     
 
-standard_deck = Deck()
-print(standard_deck)
-print(type(standard_deck.deck_counts))
-print(standard_deck.deck_counts.items())
 
-for card in standard_deck.live_deck:
-    print(card)
 
 
             
