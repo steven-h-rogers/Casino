@@ -1,4 +1,4 @@
-from DeckUtils.Deck import Deck
+from .DeckUtils.Deck import Deck
 standard_deck = Deck()
 print(standard_deck)
 print(type(standard_deck.deck_counts))

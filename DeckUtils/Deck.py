@@ -1,5 +1,5 @@
 from collections import defaultdict, Counter, deque
-from Casino.CardUtils.CardTemplate import create_card
+from ..CardUtils.CardTemplate import create_card
 import typing
 class Deck:
 

@@ -1,5 +1,5 @@
 # Casino/__main__.py
-from .DeckUtils.Deck import Deck
+from DeckUtils.Deck import Deck
 
 def main():
     print("hello world")
