@@ -1,7 +1,8 @@
-from CardUtils.Card import Card
-from CardUtils.Ace import Ace
-from CardUtils.FaceCard import FaceCard
+from .Card import Card
+from .Ace import Ace
+from .FaceCard import FaceCard
 
+@staticmethod
 def create_card(face_value, suit, is_face_up=True):
     if face_value == "A":
         return Ace(suit, is_face_up)

@@ -1,5 +1,5 @@
 import typing
-from CardUtils.Card import Card
+from .Card import Card
 
 class Ace(Card):
     def __init__(self, suit, is_face_up=True):

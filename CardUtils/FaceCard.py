@@ -1,4 +1,4 @@
-from CardUtils.Card import Card
+from .Card import Card
 class FaceCard(Card):
 
     def __init__(self, face_value, suit, is_face_up=True):

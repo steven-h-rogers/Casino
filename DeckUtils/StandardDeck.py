@@ -1,4 +1,4 @@
-from DeckUtils.Deck import Deck
+from .Deck import Deck
 
 class StandardDeck(Deck):
 
@@ -7,5 +7,5 @@ class StandardDeck(Deck):
 
     def __init__(self, remove_jokers=True):
         super().__init__(num_decks=1)
-        
+
 
