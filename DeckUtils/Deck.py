@@ -3,18 +3,14 @@ from ..CardUtils.CardTemplate import create_card
 import typing
 class Deck:
 
-    # Constants for initialization of a standard deck
-    STANDARD_SUITS = ("Spades", "Clubs", "Hearts", "Diamonds")
-    STANDARD_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
     # Constructor (Default uses one deck)
-    def __init__(self, num_decks=1):
+    def __init__(self, suits, face_values, num_decks=1):
         self.num_decks = num_decks
         # deck_counts[suit][face_value] -> count
         self.deck_counts = defaultdict(Counter)
-        self.initialize_deck_counts(Deck.STANDARD_SUITS, Deck.STANDARD_VALUES)
+        self.initialize_deck_counts(suits, face_values)
         self.live_deck = self.initialize_live_deck() # This list stores all of the card objects 
-
 
     def initialize_deck_counts(self, suit_list, face_value_list):
         for suit in suit_list:
