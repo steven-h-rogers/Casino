@@ -1,0 +1,20 @@
+This document should be used to talk through different strategies and structures that this
+project should be built with.
+
+
+Deck: should not have so many instance variables that basically are storing the same thing.
+StandardDeck: Should inherit behavior and methods from Deck, but have a default constructor.
+
+Shuffling: should likely employ the strategy pattern since there may be numerous ways to
+shuffle cards. Some include using normal distributions for the next amount of cards before
+interleaving, another might be a random.shuffle call, another might take advantage of race
+conditions in a multithreaded method that operates on a shared variable. 
+
+Cards: I may want cards to have an option to be created through a builder class to allow
+for more customizaility for different decks and rulesets in their game
+
+Dealer: should probably be created through a builder and/or have it's own children classes
+for different games.
+
+Game: should be an abstract class probably so that all game instances can be called through 
+a game object
