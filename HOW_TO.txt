@@ -1,0 +1,8 @@
+make sure that the Casino venv is active and have that in one terminal. 
+In a seperate terminal maks sure you are in the parent folder of the whole project.
+This is how you run actual files and make it so that relative imports work
+The command you'll need is :
+
+python -m Casino.DeckUtils.Shuffler
+
+just replace Shuffler with whatever you'd like to test/run
