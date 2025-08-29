@@ -3,7 +3,9 @@ from ..CardUtils.CardTemplate import create_card
 import typing
 class Deck:
 
-
+    # TODO: there must be a cleaner way to initialize a deck of cards without using so much memory
+    """We need the num_decks variable to know how many cards we need to initialize
+    deck counts is """
     # Constructor (Default uses one deck)
     def __init__(self, suits, face_values, num_decks=1):
         self.num_decks = num_decks
